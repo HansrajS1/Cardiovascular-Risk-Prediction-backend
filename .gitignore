@@ -44,11 +44,6 @@ data/raw/
 data/validated/
 data/processed/
 
-# =========================
-# Models & Artifacts
-# =========================
-models/
-artifacts/
 
 # =========================
 # MLflow
