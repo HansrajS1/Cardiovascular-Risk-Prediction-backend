@@ -79,7 +79,7 @@ class PatientInput(BaseModel):
     Age_Category_65_69: bool = False
     Age_Category_70_74: bool = False
     Age_Category_75_79: bool = False
-    Age_Category_80_plus: bool = False
+    Age_Category_80_plus: bool = False  
 
 
 @app.get("/")
