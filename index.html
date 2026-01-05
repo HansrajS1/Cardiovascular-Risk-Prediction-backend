@@ -511,126 +511,243 @@
     </div>
 
     <form id="cvdForm">
-  <div class="form-header">
-    <div>
-      <div class="form-title">
-        Input profile
-        <span class="pill-indicator">Real‑time prediction</span>
+      <div class="form-header">
+        <div>
+          <div class="form-title">
+            Input profile
+            <span class="pill-indicator">Real‑time prediction</span>
+          </div>
+          <div class="form-caption">Provide as much information as possible for a more stable estimate.</div>
+        </div>
       </div>
-      <div class="form-caption">Provide as much information as possible for a more stable estimate.</div>
-    </div>
-  </div>
 
-  <div class="grid">
-    <div class="field">
-      <label>Exercise</label>
-      <select id="Exercise"><option>No</option><option>Yes</option></select>
-    </div>
-    <div class="field">
-      <label>Heart Disease</label>
-      <select id="Heart_Disease"><option>No</option><option>Yes</option></select>
-    </div>
-    <div class="field">
-      <label>Skin Cancer</label>
-      <select id="Skin_Cancer"><option>No</option><option>Yes</option></select>
-    </div>
-    <div class="field">
-      <label>Other Cancer</label>
-      <select id="Other_Cancer"><option>No</option><option>Yes</option></select>
-    </div>
-    <div class="field">
-      <label>Depression</label>
-      <select id="Depression"><option>No</option><option>Yes</option></select>
-    </div>
-    <div class="field">
-      <label>Arthritis</label>
-      <select id="Arthritis"><option>No</option><option>Yes</option></select>
-    </div>
-    <div class="field">
-      <label>Sex</label>
-      <select id="Sex"><option>Male</option><option>Female</option></select>
-    </div>
+      <div class="grid">
+        <div class="field">
+          <label>Exercise</label>
+          <select id="Exercise">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Heart Disease</label>
+          <select id="Heart_Disease">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Skin Cancer</label>
+          <select id="Skin_Cancer">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
 
-    <div class="field">
-      <label>Height (cm)</label>
-      <input type="number" id="Height_cm" value="175">
-    </div>
-    <div class="field">
-      <label>Weight (kg)</label>
-      <input type="number" id="Weight_kg" value="70">
-    </div>
-    <div class="field">
-      <label>BMI</label>
-      <input type="number" step="0.1" id="BMI" value="22.9">
-    </div>
+        <div class="field">
+          <label>Other Cancer</label>
+          <select id="Other_Cancer">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Depression</label>
+          <select id="Depression">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Arthritis</label>
+          <select id="Arthritis">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
 
-    <div class="field">
-      <label>Smoking History</label>
-      <select id="Smoking_History"><option>No</option><option>Yes</option></select>
-    </div>
-    <div class="field">
-      <label>Alcohol Consumption</label>
-      <input type="number" id="Alcohol_Consumption" value="2">
-    </div>
-    <div class="field">
-      <label>Fruit Consumption</label>
-      <input type="number" id="Fruit_Consumption" value="3">
-    </div>
-    <div class="field">
-      <label>Green Vegetables</label>
-      <input type="number" id="Green_Vegetables_Consumption" value="2">
-    </div>
-    <div class="field">
-      <label>Fried Potato</label>
-      <input type="number" id="FriedPotato_Consumption" value="1">
-    </div>
-  </div>
+        <div class="field">
+          <label>Sex</label>
+          <select id="Sex">
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
 
-  <h3>General Health</h3>
-  <div class="checkbox-group">
-    <label><input type="checkbox" id="General_Health_Excellent"> Excellent</label>
-    <label><input type="checkbox" id="General_Health_Good" checked> Good</label>
-    <label><input type="checkbox" id="General_Health_Fair"> Fair</label>
-    <label><input type="checkbox" id="General_Health_Poor"> Poor</label>
-    <label><input type="checkbox" id="General_Health_Very_Good"> Very good</label>
-  </div>
+        <div class="field">
+          <label>Height_cm</label>
+          <input type="number" id="Height_(cm)" value="175">
+        </div>
+        <div class="field">
+          <label>Weight_kg</label>
+          <input type="number" id="Weight_(kg)" value="70">
+        </div>
 
-  <h3>Checkup</h3>
-  <div class="checkbox-group">
-    <label><input type="checkbox" id="Checkup_Within_the_past_2_years" checked> Within past 2 years</label>
-    <label><input type="checkbox" id="Checkup_Within_the_past_year"> Within past year</label>
-    <label><input type="checkbox" id="Checkup_Within_the_past_5_years"> Within past 5 years</label>
-    <label><input type="checkbox" id="Checkup_5_or_more_years_ago"> 5+ years ago</label>
-    <label><input type="checkbox" id="Checkup_Never"> Never</label>
-  </div>
+        <div class="field">
+          <label>BMI</label>
+          <input type="number" step="0.1" id="BMI" value="22.9">
+        </div>
 
-  <h3>Diabetes</h3>
-  <div class="checkbox-group">
-    <label><input type="checkbox" id="Diabetes_No" checked> No</label>
-    <label><input type="checkbox" id="Diabetes_Yes"> Yes</label>
-    <label><input type="checkbox" id="Diabetes_Pre"> Pre / borderline</label>
-    <label><input type="checkbox" id="Diabetes_Pregnancy"> Pregnancy only</label>
-  </div>
+        <div class="field">
+          <label>Smoking History</label>
+          <select id="Smoking_History">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
 
-  <h3>Age category</h3>
-  <div class="checkbox-group">
-    <label><input type="checkbox" id="Age_Category_35_39"> 35–39</label>
-    <label><input type="checkbox" id="Age_Category_40_44" checked> 40–44</label>
-    <label><input type="checkbox" id="Age_Category_45_49"> 45–49</label>
-    <label><input type="checkbox" id="Age_Category_50_54"> 50–54</label>
-    <label><input type="checkbox" id="Age_Category_60_64"> 60–64</label>
-    <label><input type="checkbox" id="Age_Category_80_plus"> 80+</label>
-  </div>
+        <div class="field">
+          <label>Alcohol Consumption</label>
+          <input type="number" id="Alcohol_Consumption" value="2">
+        </div>
 
-  <div class="form-footer">
-    <button type="submit">Predict risk</button>
-    <div style="flex:1; min-width: 0;">
-      <div class="result-label">Prediction output</div>
-      <div id="result"></div>
-    </div>
-  </div>
-</form>
+        <div class="field">
+          <label>Fruit Consumption</label>
+          <input type="number" id="Fruit_Consumption" value="3">
+        </div>
 
+        <div class="field">
+          <label>Green Vegetables</label>
+          <input type="number" id="Green_Vegetables_Consumption" value="2">
+        </div>
+
+        <div class="field">
+          <label>Fried Potato</label>
+          <input type="number" id="FriedPotato_Consumption" value="1">
+        </div>
+      </div>
+
+      <h3>General Health</h3>
+      <p class="section-helper">Select the option that best describes your current overall health.</p>
+      <div class="checkbox-group">
+        <label class="checkbox-chip">
+          <input type="checkbox" id="General_Health_Excellent">
+          <span class="check">✓</span>
+          <span class="text">Excellent</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="General_Health_Good" checked>
+          <span class="check">✓</span>
+          <span class="text">Good</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="General_Health_Fair">
+          <span class="check">✓</span>
+          <span class="text">Fair</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="General_Health_Poor">
+          <span class="check">✓</span>
+          <span class="text">Poor</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="General_Health_Very Good">
+          <span class="check">✓</span>
+          <span class="text">Very good</span>
+        </label>
+      </div>
+
+      <h3>Checkup</h3>
+      <p class="section-helper">When was your most recent general health checkup?</p>
+      <div class="checkbox-group">
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Checkup_Within the past 2 years" checked>
+          <span class="check">✓</span>
+          <span class="text">Within past 2 years</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Checkup_Within the past year">
+          <span class="check">✓</span>
+          <span class="text">Within past year</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Checkup_Within the past 5 years">
+          <span class="check">✓</span>
+          <span class="text">Within past 5 years</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Checkup_5 or more years ago">
+          <span class="check">✓</span>
+          <span class="text">5+ years ago</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Checkup_Never">
+          <span class="check">✓</span>
+          <span class="text">Never</span>
+        </label>
+      </div>
+
+      <h3>Diabetes</h3>
+      <p class="section-helper">Indicate any history or diagnosis of diabetes.</p>
+      <div class="checkbox-group">
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Diabetes_No" checked>
+          <span class="check">✓</span>
+          <span class="text">No</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Diabetes_Yes">
+          <span class="check">✓</span>
+          <span class="text">Yes</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Diabetes_No, pre-diabetes or borderline diabetes">
+          <span class="check">✓</span>
+          <span class="text">Pre / borderline</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Diabetes_Yes, but female told only during pregnancy">
+          <span class="check">✓</span>
+          <span class="text">Pregnancy only</span>
+        </label>
+      </div>
+
+      <h3>Age category</h3>
+      <p class="section-helper">Select the range that includes your current age.</p>
+      <div class="checkbox-group">
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Age_Category_40-44" checked>
+          <span class="check">✓</span>
+          <span class="text">40–44</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Age_Category_35-39">
+          <span class="check">✓</span>
+          <span class="text">35–39</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Age_Category_45-49">
+          <span class="check">✓</span>
+          <span class="text">45–49</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Age_Category_50-54">
+          <span class="check">✓</span>
+          <span class="text">50–54</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Age_Category_60-64">
+          <span class="check">✓</span>
+          <span class="text">60–64</span>
+        </label>
+        <label class="checkbox-chip">
+          <input type="checkbox" id="Age_Category_80+">
+          <span class="check">✓</span>
+          <span class="text">80+</span>
+        </label>
+      </div>
+
+      <div class="form-footer">
+        <button type="submit">
+          Predict risk
+        </button>
+
+        <div style="flex:1; min-width: 0;">
+          <div class="result-label">Prediction output</div>
+          <div id="result"></div>
+        </div>
+      </div>
+    </form>
   </div>
 
   <script>
