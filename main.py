@@ -1,13 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import pandas as pd
 import joblib
 import gc
 
 MODEL_PATH = "models/RandomForest.pkl"
 PREPROCESSOR_PATH = "models/preprocessor.pkl"
-
 model = None
 preprocessor = None
 
@@ -30,7 +29,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 class PatientInput(BaseModel):
     Exercise: str
     Heart_Disease: str
@@ -40,8 +38,8 @@ class PatientInput(BaseModel):
     Arthritis: str
     Sex: str
 
-    Height_cm: float
-    Weight_kg: float
+    Height_cm: float = Field(..., alias="Height_(cm)")
+    Weight_kg: float = Field(..., alias="Weight_(kg)")
     BMI: float
 
     Smoking_History: str
@@ -54,33 +52,32 @@ class PatientInput(BaseModel):
     General_Health_Fair: bool = False
     General_Health_Good: bool = False
     General_Health_Poor: bool = False
-    General_Health_Very_Good: bool = False
+    General_Health_Very_Good: bool = Field(False, alias="General_Health_Very Good")
 
-    Checkup_5_or_more_years_ago: bool = False
+    Checkup_5_or_more_years_ago: bool = Field(False, alias="Checkup_5 or more years ago")
     Checkup_Never: bool = False
-    Checkup_Within_the_past_2_years: bool = False
-    Checkup_Within_the_past_5_years: bool = False
-    Checkup_Within_the_past_year: bool = False
+    Checkup_Within_the_past_2_years: bool = Field(False, alias="Checkup_Within the past 2 years")
+    Checkup_Within_the_past_5_years: bool = Field(False, alias="Checkup_Within the past 5 years")
+    Checkup_Within_the_past_year: bool = Field(False, alias="Checkup_Within the past year")
 
     Diabetes_No: bool = False
-    Diabetes_Pre: bool = False
+    Diabetes_Pre: bool = Field(False, alias="Diabetes_No, pre-diabetes or borderline diabetes")
     Diabetes_Yes: bool = False
-    Diabetes_Pregnancy: bool = False
+    Diabetes_Pregnancy: bool = Field(False, alias="Diabetes_Yes, but female told only during pregnancy")
 
-    Age_Category_18_24: bool = False
-    Age_Category_25_29: bool = False
-    Age_Category_30_34: bool = False
-    Age_Category_35_39: bool = False
-    Age_Category_40_44: bool = False
-    Age_Category_45_49: bool = False
-    Age_Category_50_54: bool = False
-    Age_Category_55_59: bool = False
-    Age_Category_60_64: bool = False
-    Age_Category_65_69: bool = False
-    Age_Category_70_74: bool = False
-    Age_Category_75_79: bool = False
-    Age_Category_80_plus: bool = False  
-
+    Age_Category_18_24: bool = Field(False, alias="Age_Category_18-24")
+    Age_Category_25_29: bool = Field(False, alias="Age_Category_25-29")
+    Age_Category_30_34: bool = Field(False, alias="Age_Category_30-34")
+    Age_Category_35_39: bool = Field(False, alias="Age_Category_35-39")
+    Age_Category_40_44: bool = Field(False, alias="Age_Category_40-44")
+    Age_Category_45_49: bool = Field(False, alias="Age_Category_45-49")
+    Age_Category_50_54: bool = Field(False, alias="Age_Category_50-54")
+    Age_Category_55_59: bool = Field(False, alias="Age_Category_55-59")
+    Age_Category_60_64: bool = Field(False, alias="Age_Category_60-64")
+    Age_Category_65_69: bool = Field(False, alias="Age_Category_65-69")
+    Age_Category_70_74: bool = Field(False, alias="Age_Category_70-74")
+    Age_Category_75_79: bool = Field(False, alias="Age_Category_75-79")
+    Age_Category_80_plus: bool = Field(False, alias="Age_Category_80+")
 
 @app.get("/")
 def home():
@@ -91,16 +88,7 @@ def home():
 def predict(data: PatientInput):
     load_artifacts()
 
-    df = pd.DataFrame([data.model_dump()])
-
-    df.rename(
-        columns={
-            "Height_cm": "Height_(cm)",
-            "Weight_kg": "Weight_(kg)",
-            "Age_Category_80_plus": "Age_Category_80+",
-        },
-        inplace=True,
-    )
+    df = pd.DataFrame([data.dict(by_alias=True)])
 
     for col, le in preprocessor["label_encoders"].items():
         if col in df.columns:
@@ -119,17 +107,17 @@ def predict(data: PatientInput):
     prob = float(model.predict_proba(df)[0][1])
 
     if prob >= 0.20:
-        result = "High Risk"
+        risk = "High Risk"
         label = 1
     elif prob >= 0.10:
-        result = "Moderate Risk"
+        risk = "Moderate Risk"
         label = 1
     else:
-        result = "Low Risk"
+        risk = "Low Risk"
         label = 0
 
     return {
         "heart_disease_prediction": label,
         "risk_probability": round(prob, 3),
-        "result": result,
+        "result": risk
     }
